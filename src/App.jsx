@@ -46,6 +46,7 @@ export const App = () => {
         onChange={onChangeTodoText}
         onClick={onClickAdd}
       />
+
       <div className="incomplete-area">
         <p className="title">未完了のTODO</p>
         <ul>
