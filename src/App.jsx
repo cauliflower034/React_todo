@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./styles.css";
 import { InputTodo } from "./components/InputTodo";
+import { IncmpTodo } from "./components/IncmpTodo";
+import { CmpTodo } from "./components/CmpTodo";
 
 export const App = () => {
   const [TodoText, setTodoText] = useState("");
@@ -47,33 +49,9 @@ export const App = () => {
         onClick={onClickAdd}
       />
 
-      <div className="incomplete-area">
-        <p className="title">未完了のTODO</p>
-        <ul>
-          {incmp.map((todo, index) => {
-            return (
-              <div key={todo} className="list-row">
-                <li>{todo}</li>
-                <button onClick={() => onClickCmp(index)}>完了</button>
-                <button onClick={() => onClickdel(index)}>削除</button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
-      <div className="complete-area">
-        <p className="title">完了したTODO</p>
-        <ul>
-          {cmp.map((todo, index) => {
-            return (
-              <div key={todo} className="list-row">
-                <li>{todo}</li>
-                <button onClick={() => onClickBack(index)}>戻す</button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
+      <IncmpTodo incmp={incmp} onCmp={onClickCmp} onDel={onClickdel} />
+
+      <CmpTodo cmp={cmp} onBack={onClickBack} />
     </>
   );
 };
