@@ -33,6 +33,18 @@ li {
   padding: 8px;
   margin: 8px;
 }
+progress {
+  margin-left: 16px;
+  width: 80%;
+}
+.progress-area {
+  background-color: aqua;
+  width: 400px;
+  height: 30px;
+  padding: 8px;
+  margin: 8px;
+  border-radius: 8px;
+}
 
 .incomplete-area {
   background-color: #c6ffe2;

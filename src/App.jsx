@@ -11,6 +11,27 @@ export const App = () => {
 
   const onChangeTodoText = (event) => setTodoText(event.target.value);
 
+  const progress_set = () => {
+    const val = 10;
+    return (
+      <div className="progress-area">
+        進捗度:
+        <progress id="myProgress" value={val} max="100">
+          0%
+        </progress>
+      </div>
+    );
+  };
+
+  const allDelete = () => {
+    const pop = prompt("何を消す?", "here");
+    console.log(pop);
+    // const allTodods = [...incmp,...cmp];
+    // console.log(allTodods);
+    // setincmp([]);
+    // setcmp([]);
+  };
+
   const onClickAdd = () => {
     if (TodoText === "") return;
     const newTodos = [...incmp, TodoText];
@@ -47,6 +68,8 @@ export const App = () => {
         todoText={TodoText}
         onChange={onChangeTodoText}
         onClick={onClickAdd}
+        delclick={allDelete}
+        setVal={progress_set}
       />
 
       <IncmpTodo incmp={incmp} onCmp={onClickCmp} onDel={onClickdel} />
