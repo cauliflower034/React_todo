@@ -1,26 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { InputTodo } from "./components/InputTodo";
 import { IncmpTodo } from "./components/IncmpTodo";
 import { CmpTodo } from "./components/CmpTodo";
+import { Progress } from "./components/Progress";
 
 export const App = () => {
   const [TodoText, setTodoText] = useState("");
   const [incmp, setincmp] = useState([]);
   const [cmp, setcmp] = useState([]);
+  const [Val, setVal] = useState(0.0);
 
   const onChangeTodoText = (event) => setTodoText(event.target.value);
 
   const progress_set = () => {
-    const val = 10;
-    return (
-      <div className="progress-area">
-        進捗度:
-        <progress id="myProgress" value={val} max="100">
-          0%
-        </progress>
-      </div>
-    );
+    let allcnt = 0;
+    let cmpcnt = 0;
+    useEffect(() => {
+      incmp.map(() => allcnt++);
+      cmp.map(() => allcnt++);
+      cmp.map(() => cmpcnt++);
+      setVal(allcnt === 0 ? 0 : keisan());
+      console.log(allcnt, cmpcnt, Val);
+    }, [incmp]);
+
+    const keisan = () => {
+      const V = (100 * cmpcnt) / allcnt;
+      return V.toFixed(0);
+    };
+
+    // return (
+    //   <div className="progress-area">
+    //     進捗度:
+    //     <progress id="myProgress" value={val} max="100">
+    //       0%
+    //     </progress>
+    //     {val}%
+    //   </div>
+    // );
   };
 
   const allDelete = () => {
@@ -71,6 +88,8 @@ export const App = () => {
         delclick={allDelete}
         setVal={progress_set}
       />
+
+      <Progress Setpro={progress_set} Value={Val} />
 
       <IncmpTodo incmp={incmp} onCmp={onClickCmp} onDel={onClickdel} />
 
