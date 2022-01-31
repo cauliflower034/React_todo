@@ -41,12 +41,12 @@ export const App = () => {
   };
 
   const allDelete = () => {
-    const pop = prompt("何を消す?", "here");
-    console.log(pop);
+    // const pop = prompt("何を消す?", "here");
+    // console.log(pop);
     // const allTodods = [...incmp,...cmp];
     // console.log(allTodods);
-    // setincmp([]);
-    // setcmp([]);
+    setincmp([]);
+    setcmp([]);
   };
 
   const onClickAdd = () => {
