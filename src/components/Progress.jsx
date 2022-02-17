@@ -1,8 +1,7 @@
 import React from "react";
 
 export const Progress = (props) => {
-  const { Setpro, Value } = props;
-  Setpro();
+  const { Value } = props;
   return (
     <div className="progress-area">
       進捗度:
